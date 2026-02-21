@@ -1,0 +1,18 @@
+{
+	"home_hero_title": "Git Conventional Commits Practice",
+	"home_hero_description": "Master the art of writing meaningful commit messages with our comprehensive guide to conventional commits, Git workflows, and GitHub best practices. Learn from examples, practice with our tools, and improve your development workflow.",
+	"home_features_generator_title": "Generator",
+	"home_features_generator_description": "Create perfect commit messages with our interactive generator",
+	"home_features_examples_title": "Examples",
+	"home_features_examples_description": "Browse real-world examples from popular open source projects",
+	"home_features_validator_title": "Validator",
+	"home_features_validator_description": "Validate your commit messages against conventional standards",
+	"home_features_guide_title": "Guide",
+	"home_features_guide_description": "Comprehensive guide to conventional commit best practices",
+	"home_cta_title": "Ready to Transform Your Git Workflow?",
+	"home_cta_description": "Join thousands of developers who write better commit messages and maintain cleaner project histories. Master conventional commits with our comprehensive tools and guides.",
+	"home_cta_button_primary": "Start Generating",
+	"home_cta_button_secondary": "View Examples",
+	"home_cta_footer_text": "Built with ❤️ by",
+	"home_cta_footer_author": "Amol Rathod"
+}

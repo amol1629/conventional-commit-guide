@@ -1,0 +1,466 @@
+
+
+/* Materio Carousel - Responsive & Ultra Smooth */
+.materio-carousel {
+	position: relative;
+	overflow: visible;
+	padding: 1rem 0;
+}
+
+/* Center card highlighting - Responsive */
+.center-card {
+	opacity: 1;
+	z-index: 10;
+	position: relative;
+}
+
+.left-card,
+.right-card {
+	opacity: 0.85;
+}
+
+/* Smooth carousel transitions - only for non-animated states */
+.carousel-transition {
+	transition: all 0.3s ease-out;
+}
+
+/* Disable transitions during animation */
+.carousel-transition.center-card-transition {
+	transition: none;
+}
+
+/* Swipe-like slide animation */
+.slide-animation {
+	animation: swipeSlide 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes swipeSlide {
+	0% {
+		transform: translateX(100px);
+		opacity: 0;
+	}
+	100% {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+/* Center card transition animation - Ultra smooth */
+.center-card-transition {
+	animation: centerCardTransition 0.3s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+@keyframes centerCardTransition {
+	0% {
+		opacity: 0.75;
+		filter: none;
+	}
+	100% {
+		opacity: 1;
+		filter: none;
+	}
+}
+
+/* Fixed hover effects - no clipping */
+.center-card:hover {
+	box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.dark .center-card:hover {
+	box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
+}
+
+/* Side card hover effects */
+.left-card:hover,
+.right-card:hover {
+	opacity: 0.95;
+}
+
+/* Clean pagination dots */
+.carousel-dot {
+	transition: all 0.3s ease;
+}
+
+.carousel-dot:hover {
+	transform: scale(1.1);
+}
+
+.carousel-dot.active {
+	transform: scale(1.25);
+}
+
+/* Focus states for accessibility */
+.carousel-dot:focus {
+	outline: 2px solid #3b82f6;
+	outline-offset: 2px;
+}
+
+/* Responsive adjustments for ultra-smooth performance */
+@media (max-width: 1024px) {
+	.left-card,
+	.right-card {
+		opacity: 0.75;
+	}
+}
+
+@media (max-width: 768px) {
+	.left-card,
+	.right-card {
+		opacity: 0.65;
+	}
+}
+
+/* Mobile: Show only center card for best performance */
+@media (max-width: 640px) {
+	.left-card,
+	.right-card {
+		display: none;
+	}
+
+	.materio-carousel {
+		padding: 0.5rem 0;
+	}
+}
+
+/* Ultra-small screens */
+@media (max-width: 480px) {
+	.materio-carousel {
+		padding: 0.25rem 0;
+	}
+}
+
+/* Global Dark Mode Optimizations */
+* {
+	transition:
+		background-color 0.3s ease,
+		border-color 0.3s ease,
+		color 0.3s ease;
+}
+
+/* Smooth dark mode transitions */
+html {
+	transition: background-color 0.3s ease;
+}
+
+body {
+	transition:
+		background-color 0.3s ease,
+		color 0.3s ease;
+}
+
+/* Enhanced dark mode scrollbar */
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #888;
+	border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
+
+.dark ::-webkit-scrollbar-track {
+	background: #1e293b;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+	background: #475569;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+	background: #64748b;
+}
+
+/* Enhanced focus states for accessibility */
+*:focus {
+	outline: 2px solid #3b82f6;
+	outline-offset: 2px;
+}
+
+.dark *:focus {
+	outline: 2px solid #60a5fa;
+	outline-offset: 2px;
+}
+
+/* Remove focus outline from tab elements */
+[role='tab']:focus,
+[role='tab']:focus-visible,
+[data-state='active']:focus,
+[data-state='active']:focus-visible,
+button[role='tab']:focus,
+button[role='tab']:focus-visible {
+	outline: none !important;
+	box-shadow: none !important;
+	ring: none !important;
+}
+
+/* Remove focus outline from tab list */
+[role='tablist']:focus,
+[role='tablist']:focus-visible {
+	outline: none !important;
+	box-shadow: none !important;
+	ring: none !important;
+}
+
+/* Skip to content link for screen readers */
+.skip-link {
+	position: absolute;
+	top: -40px;
+	left: 6px;
+	background: #000;
+	color: #fff;
+	padding: 8px;
+	text-decoration: none;
+	z-index: 1000;
+}
+
+.skip-link:focus {
+	top: 6px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+	.text-gray-600 {
+		color: #000;
+	}
+
+	.dark .text-gray-200 {
+		color: #fff;
+	}
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+	* {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+}
+
+/* Smooth gradient animations */
+@keyframes gradientShift {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.animate-gradient {
+	background-size: 200% 200%;
+	animation: gradientShift 3s ease infinite;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Animations for Interactive Practice */
+@keyframes fade-in {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes slide-up {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes slide-in {
+	from {
+		opacity: 0;
+		transform: translateX(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+.animate-fade-in {
+	animation: fade-in 0.6s ease-out;
+}
+
+.animate-slide-up {
+	animation: slide-up 0.8s ease-out;
+}
+
+.animate-slide-in {
+	animation: slide-in 0.5s ease-out;
+}
+
+@layer base {
+	:root {
+		/* Ultimate Professional Color Scheme - Light Theme */
+		--background: 0 0% 100%;
+		--foreground: 222.2 84% 4.9%;
+		--card: 0 0% 100%;
+		--card-foreground: 222.2 84% 4.9%;
+		--popover: 0 0% 100%;
+		--popover-foreground: 222.2 84% 4.9%;
+		--primary: 221.2 83.2% 53.3%;
+		--primary-foreground: 210 40% 98%;
+		--secondary: 210 40% 96%;
+		--secondary-foreground: 222.2 84% 4.9%;
+		--muted: 210 40% 96%;
+		--muted-foreground: 215.4 16.3% 46.9%;
+		--accent: 210 40% 96%;
+		--accent-foreground: 222.2 84% 4.9%;
+		--destructive: 0 84.2% 60.2%;
+		--destructive-foreground: 210 40% 98%;
+		--border: 214.3 31.8% 91.4%;
+		--input: 214.3 31.8% 91.4%;
+		--ring: 221.2 83.2% 53.3%;
+		--radius: 0.5rem;
+
+		/* Professional Blue Shades - Light Theme */
+		--blue-50: 214 100% 97%;
+		--blue-100: 214 95% 93%;
+		--blue-200: 213 97% 87%;
+		--blue-300: 212 96% 78%;
+		--blue-400: 213 94% 68%;
+		--blue-500: 217 91% 60%;
+		--blue-600: 221 83% 53%;
+		--blue-700: 224 76% 48%;
+		--blue-800: 226 71% 40%;
+		--blue-900: 224 64% 33%;
+		--blue-950: 226 74% 19%;
+
+		/* Professional Emerald Shades - Light Theme */
+		--emerald-50: 152 81% 96%;
+		--emerald-100: 149 80% 90%;
+		--emerald-200: 152 76% 80%;
+		--emerald-300: 156 72% 67%;
+		--emerald-400: 158 64% 52%;
+		--emerald-500: 160 84% 39%;
+		--emerald-600: 161 94% 30%;
+		--emerald-700: 163 94% 24%;
+		--emerald-800: 163 88% 20%;
+		--emerald-900: 164 85% 16%;
+		--emerald-950: 166 91% 9%;
+
+		/* Professional Orange Shades - Light Theme */
+		--orange-50: 33 100% 96%;
+		--orange-100: 34 100% 92%;
+		--orange-200: 32 98% 83%;
+		--orange-300: 31 97% 72%;
+		--orange-400: 27 96% 61%;
+		--orange-500: 25 95% 53%;
+		--orange-600: 21 90% 48%;
+		--orange-700: 17 88% 40%;
+		--orange-800: 15 79% 34%;
+		--orange-900: 12 75% 29%;
+		--orange-950: 8 80% 15%;
+		--sidebar-background: 0 0% 98%;
+		--sidebar-foreground: 240 5.3% 26.1%;
+		--sidebar-primary: 240 5.9% 10%;
+		--sidebar-primary-foreground: 0 0% 98%;
+		--sidebar-accent: 240 4.8% 95.9%;
+		--sidebar-accent-foreground: 240 5.9% 10%;
+		--sidebar-border: 220 13% 91%;
+		--sidebar-ring: 217.2 91.2% 59.8%;
+	}
+
+	.dark {
+		/* Ultimate Professional Color Scheme - Dark Theme */
+		--background: 222.2 84% 4.9%;
+		--foreground: 210 40% 98%;
+		--card: 222.2 84% 4.9%;
+		--card-foreground: 210 40% 98%;
+		--popover: 222.2 84% 4.9%;
+		--popover-foreground: 210 40% 98%;
+		--primary: 217.2 91.2% 59.8%;
+		--primary-foreground: 222.2 84% 4.9%;
+		--secondary: 217.2 32.6% 17.5%;
+		--secondary-foreground: 210 40% 98%;
+		--muted: 217.2 32.6% 17.5%;
+		--muted-foreground: 215 20.2% 65.1%;
+		--accent: 217.2 32.6% 17.5%;
+		--accent-foreground: 210 40% 98%;
+		--destructive: 0 62.8% 30.6%;
+		--destructive-foreground: 210 40% 98%;
+		--border: 217.2 32.6% 17.5%;
+		--input: 217.2 32.6% 17.5%;
+		--ring: 224.3 76.3% 94.1%;
+
+		/* Professional Blue Shades - Dark Theme */
+		--blue-50: 226 74% 19%;
+		--blue-100: 224 64% 33%;
+		--blue-200: 224 76% 48%;
+		--blue-300: 221 83% 53%;
+		--blue-400: 217 91% 60%;
+		--blue-500: 213 94% 68%;
+		--blue-600: 212 96% 78%;
+		--blue-700: 213 97% 87%;
+		--blue-800: 214 95% 93%;
+		--blue-900: 214 100% 97%;
+		--blue-950: 214 100% 99%;
+
+		/* Professional Emerald Shades - Dark Theme */
+		--emerald-50: 166 91% 9%;
+		--emerald-100: 164 85% 16%;
+		--emerald-200: 163 88% 20%;
+		--emerald-300: 163 94% 24%;
+		--emerald-400: 161 94% 30%;
+		--emerald-500: 160 84% 39%;
+		--emerald-600: 158 64% 52%;
+		--emerald-700: 156 72% 67%;
+		--emerald-800: 152 76% 80%;
+		--emerald-900: 149 80% 90%;
+		--emerald-950: 152 81% 96%;
+
+		/* Professional Orange Shades - Dark Theme */
+		--orange-50: 8 80% 15%;
+		--orange-100: 12 75% 29%;
+		--orange-200: 15 79% 34%;
+		--orange-300: 17 88% 40%;
+		--orange-400: 21 90% 48%;
+		--orange-500: 25 95% 53%;
+		--orange-600: 27 96% 61%;
+		--orange-700: 31 97% 72%;
+		--orange-800: 32 98% 83%;
+		--orange-900: 34 100% 92%;
+		--orange-950: 33 100% 96%;
+		--sidebar-background: 240 5.9% 10%;
+		--sidebar-foreground: 240 4.8% 95.9%;
+		--sidebar-primary: 224.3 76.3% 48%;
+		--sidebar-primary-foreground: 0 0% 100%;
+		--sidebar-accent: 240 3.7% 15.9%;
+		--sidebar-accent-foreground: 240 4.8% 95.9%;
+		--sidebar-border: 240 3.7% 15.9%;
+		--sidebar-ring: 217.2 91.2% 59.8%;
+	}
+}
+
+@layer base {
+	* {
+		@apply border-border;
+	}
+	body {
+		@apply bg-background text-foreground;
+	}
+}

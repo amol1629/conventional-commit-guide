@@ -1,0 +1,6 @@
+export { HeroSection } from './HeroSection'
+export { WhatIsSection } from './WhatIsSection'
+export { BenefitsSlider } from './BenefitsSlider'
+export { FeaturesSection } from './FeaturesSection'
+export { HowItWorksSection } from './HowItWorksSection'
+export { CTASection } from './CTASection'

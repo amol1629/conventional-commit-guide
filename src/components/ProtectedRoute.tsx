@@ -21,45 +21,33 @@ export default function ProtectedRoute({
 	const [isRedirecting, setIsRedirecting] = useState(false)
 
 	useEffect(() => {
-		// Only redirect if auth is required, we're not already redirecting, and not authenticated
+		// Only redirect if auth is required and not authenticated - no loading state needed
 		if (
 			isAuthRequired() &&
 			!authState.isLoading &&
 			!authState.isAuthenticated &&
 			!isRedirecting
 		) {
-			console.log(
-				'ProtectedRoute: User not authenticated, redirecting to login',
-			)
 			setIsRedirecting(true)
 			router.replace('/auth/login')
+			return
 		}
+		// If auth is not required, allow access immediately
 	}, [authState.isLoading, authState.isAuthenticated, router, isRedirecting])
 
-	// Show loading only if AuthContext is loading
-	if (authState.isLoading) {
-		return (
-			<div className="flex items-center justify-center min-h-screen">
-				<div className="text-center">
-					<div className="w-8 h-8 mx-auto mb-4 border-b-2 border-blue-500 rounded-full animate-spin"></div>
-					<p className="text-gray-600 dark:text-gray-400">Loading...</p>
-				</div>
-			</div>
-		)
+	// Skip loading states - render children immediately if auth is not required
+	if (!isAuthRequired()) {
+		return <>{children}</>
 	}
 
-	// Show loading if redirecting
+	// Only show loading if auth is required and we're still checking
+	if (authState.isLoading) {
+		return null // Return null instead of spinner for faster rendering
+	}
+
+	// If redirecting, return null - redirect happens immediately
 	if (isRedirecting) {
-		return (
-			<div className="flex items-center justify-center min-h-screen">
-				<div className="text-center">
-					<div className="w-8 h-8 mx-auto mb-4 border-b-2 border-blue-500 rounded-full animate-spin"></div>
-					<p className="text-gray-600 dark:text-gray-400">
-						Redirecting to login...
-					</p>
-				</div>
-			</div>
-		)
+		return null
 	}
 
 	// Double-check authentication before rendering (only if auth is required)

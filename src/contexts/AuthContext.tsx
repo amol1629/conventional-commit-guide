@@ -1,6 +1,7 @@
 'use client'
 
 import { AuthState, AuthUser } from '@/types/auth'
+import { isAuthRequired } from '@/config/auth.config'
 import { useSession } from 'next-auth/react'
 import {
 	createContext,
@@ -22,10 +23,12 @@ const AuthContext = createContext<{
 
 export function AuthProvider({ children }: { children: ReactNode }) {
 	const { data: session, status } = useSession()
+	// Skip loading state if auth is disabled for faster initial render
+	const authRequired = isAuthRequired()
 	const [authState, setAuthState] = useState<AuthState>({
 		user: null,
 		isAuthenticated: false,
-		isLoading: true,
+		isLoading: authRequired, // Only load if auth is required
 		error: null,
 	})
 	const welcomeShownRef = useRef(false)
@@ -33,6 +36,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
 	// Handle NextAuth session changes
 	useEffect(() => {
+		// Skip auth check if auth is not required
+		if (!authRequired) {
+			setAuthState({
+				user: null,
+				isAuthenticated: false,
+				isLoading: false,
+				error: null,
+			})
+			return
+		}
+
 		if (status === 'loading') {
 			setAuthState((prev) => ({ ...prev, isLoading: true }))
 			return

@@ -31,7 +31,7 @@ export function ModernSidebar({ className }: ModernSidebarProps) {
 				return storedCollapseState === 'true'
 			}
 		}
-		return true
+		return false // Expanded by default
 	})
 
 	// Initialize navigation service following Dependency Injection principle
@@ -123,13 +123,10 @@ export function ModernSidebar({ className }: ModernSidebarProps) {
 						role="navigation"
 						aria-label={t('common:navigation_main_label') as string}
 					>
-						{translatedItems.map((item, index) => (
+						{translatedItems.map((item) => (
 							<div
 								key={item.href}
-								className="transition-all duration-300 ease-in-out"
-								style={{
-									animationDelay: `${index * 50}ms`,
-								}}
+								className="transition-all duration-200 ease-in-out"
 							>
 								<NavigationButton
 									item={item}

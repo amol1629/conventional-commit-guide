@@ -20,6 +20,7 @@ import {
 } from '@/components/ui/select'
 import { Textarea } from '@/components/ui/textarea'
 import { getFontAwesomeIcon } from '@/utils/fontawesome-mapping'
+import { validateCommitMessage } from '@/utils/validation'
 import { useEffect, useMemo, useState } from 'react'
 import toast from 'react-hot-toast'
 
@@ -330,14 +331,62 @@ export function CommitGenerator() {
 							{generateCommit || 'Your commit message will appear here...'}
 						</div>
 
-						{type && description && (
-							<div className="mt-4 p-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg">
-								<div className="flex items-center gap-2 text-green-700 dark:text-green-300">
-									{getFontAwesomeIcon('Check', 'w-4 h-4')}
-									<span className="font-medium">Valid commit message!</span>
+						{generateCommit && (() => {
+							const validation = validateCommitMessage(generateCommit)
+
+							if (!validation.isValid) {
+								return (
+									<div className="mt-4 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
+										<div className="flex items-start gap-2 text-red-700 dark:text-red-300">
+											{getFontAwesomeIcon('XCircle', 'w-4 h-4 mt-0.5 flex-shrink-0')}
+											<div className="flex-1">
+												<span className="font-medium block mb-1">Invalid commit message!</span>
+												<ul className="text-sm space-y-1">
+													{validation.errors.map((error, idx) => (
+														<li key={idx}>• {error}</li>
+													))}
+												</ul>
+											</div>
+										</div>
+									</div>
+								)
+							}
+
+							if (validation.warnings.length > 0) {
+								return (
+									<div className="mt-4 space-y-2">
+										<div className="p-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg">
+											<div className="flex items-center gap-2 text-green-700 dark:text-green-300">
+												{getFontAwesomeIcon('CheckCircle', 'w-4 h-4')}
+												<span className="font-medium">Valid commit message!</span>
+											</div>
+										</div>
+										<div className="p-3 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg">
+											<div className="flex items-start gap-2 text-yellow-700 dark:text-yellow-300">
+												{getFontAwesomeIcon('AlertTriangle', 'w-4 h-4 mt-0.5 flex-shrink-0')}
+												<div className="flex-1">
+													<span className="font-medium block mb-1">Suggestions:</span>
+													<ul className="text-sm space-y-1">
+														{validation.warnings.map((warning, idx) => (
+															<li key={idx}>• {warning}</li>
+														))}
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								)
+							}
+
+							return (
+								<div className="mt-4 p-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg">
+									<div className="flex items-center gap-2 text-green-700 dark:text-green-300">
+										{getFontAwesomeIcon('CheckCircle', 'w-4 h-4')}
+										<span className="font-medium">Perfect! Valid commit message!</span>
+									</div>
 								</div>
-							</div>
-						)}
+							)
+						})()}
 					</CardContent>
 				</Card>
 			</div>

@@ -18,7 +18,7 @@ export const GIT_COMMANDS: GitCommands = {
 				'--bare: Create a bare repository',
 				'--template: Use a template directory',
 			],
-			icon: getFontAwesomeIcon('GitCommit', 'w-8 h-8'),
+			icon: getFontAwesomeIcon('GitCommit', 'w-6 h-6 text-emerald-600'),
 		},
 		{
 			command: 'git clone',
@@ -36,7 +36,7 @@ export const GIT_COMMANDS: GitCommands = {
 				'--branch: Clone specific branch',
 				'--recursive: Clone submodules',
 			],
-			icon: getFontAwesomeIcon('Download', 'w-6 h-6 text-blue-500'),
+			icon: getFontAwesomeIcon('Download', 'w-6 h-6 text-blue-600'),
 		},
 		{
 			command: 'git add',
@@ -54,7 +54,7 @@ export const GIT_COMMANDS: GitCommands = {
 				'git add file.txt : Add specific file',
 				'git add -p : Interactive staging',
 			],
-			icon: getFontAwesomeIcon('Plus', 'w-4 h-4'),
+			icon: getFontAwesomeIcon('Plus', 'w-6 h-6 text-green-600'),
 		},
 		{
 			command: 'git commit',
@@ -72,7 +72,7 @@ export const GIT_COMMANDS: GitCommands = {
 				'-a: Stage and commit all tracked files',
 				'--amend: Modify last commit',
 			],
-			icon: getFontAwesomeIcon('Save', 'w-4 h-4'),
+			icon: getFontAwesomeIcon('Save', 'w-6 h-6 text-purple-600'),
 		},
 		{
 			command: 'git push',
@@ -90,7 +90,7 @@ export const GIT_COMMANDS: GitCommands = {
 				'--force: Force push (dangerous)',
 				'--tags: Push tags',
 			],
-			icon: getFontAwesomeIcon('Upload', 'w-4 h-4'),
+			icon: getFontAwesomeIcon('Upload', 'w-6 h-6 text-cyan-600'),
 		},
 		{
 			command: 'git pull',
@@ -108,7 +108,7 @@ export const GIT_COMMANDS: GitCommands = {
 				'--ff-only: Fast-forward only',
 				'--no-ff: No fast-forward',
 			],
-			icon: getFontAwesomeIcon('Download', 'w-4 h-4'),
+			icon: getFontAwesomeIcon('Download', 'w-6 h-6 text-indigo-600'),
 		},
 		{
 			command: 'git status',
@@ -126,7 +126,7 @@ export const GIT_COMMANDS: GitCommands = {
 				'--porcelain: Machine-readable format',
 				'--ignored: Show ignored files',
 			],
-			icon: getFontAwesomeIcon('Eye', 'w-4 h-4'),
+			icon: getFontAwesomeIcon('Eye', 'w-6 h-6 text-amber-600'),
 		},
 	],
 	advanced: [
@@ -146,7 +146,7 @@ export const GIT_COMMANDS: GitCommands = {
 				'-d: Delete branch',
 				'-m: Rename branch',
 			],
-			icon: getFontAwesomeIcon('GitBranch', 'w-4 h-4'),
+			icon: getFontAwesomeIcon('GitBranch', 'w-6 h-6 text-pink-600'),
 		},
 		{
 			command: 'git checkout',
@@ -164,7 +164,7 @@ export const GIT_COMMANDS: GitCommands = {
 				'--track: Track remote branch',
 				'--force: Force checkout',
 			],
-			icon: getFontAwesomeIcon('RefreshCw', 'w-4 h-4'),
+			icon: getFontAwesomeIcon('RefreshCw', 'w-6 h-6 text-orange-600'),
 		},
 		{
 			command: 'git merge',
@@ -182,7 +182,7 @@ export const GIT_COMMANDS: GitCommands = {
 				'--squash: Squash commits',
 				'--abort: Abort merge',
 			],
-			icon: getFontAwesomeIcon('Merge', 'w-4 h-4'),
+			icon: getFontAwesomeIcon('Merge', 'w-6 h-6 text-violet-600'),
 		},
 		{
 			command: 'git rebase',
@@ -200,7 +200,7 @@ export const GIT_COMMANDS: GitCommands = {
 				'--onto: Rebase onto specific commit',
 				'--continue: Continue rebase',
 			],
-			icon: getFontAwesomeIcon('Split', 'w-4 h-4'),
+			icon: getFontAwesomeIcon('Split', 'w-6 h-6 text-rose-600'),
 		},
 		{
 			command: 'git stash',
@@ -218,7 +218,7 @@ export const GIT_COMMANDS: GitCommands = {
 				'list: List all stashes',
 				'drop: Delete stash',
 			],
-			icon: getFontAwesomeIcon('Archive', 'w-4 h-4'),
+			icon: getFontAwesomeIcon('Archive', 'w-6 h-6 text-teal-600'),
 		},
 		{
 			command: 'git reset',
@@ -236,7 +236,7 @@ export const GIT_COMMANDS: GitCommands = {
 				'--mixed: Unstage changes',
 				'--hard: Discard all changes',
 			],
-			icon: getFontAwesomeIcon('RefreshCw', 'w-4 h-4'),
+			icon: getFontAwesomeIcon('RefreshCw', 'w-6 h-6 text-orange-600'),
 		},
 		{
 			command: 'git revert',
@@ -254,7 +254,7 @@ export const GIT_COMMANDS: GitCommands = {
 				'--no-edit: Use default commit message',
 				'-m: Specify parent for merge',
 			],
-			icon: getFontAwesomeIcon('RefreshCw', 'w-4 h-4'),
+			icon: getFontAwesomeIcon('RefreshCw', 'w-6 h-6 text-orange-600'),
 		},
 	],
 	workflow: [
@@ -274,7 +274,7 @@ export const GIT_COMMANDS: GitCommands = {
 				'--graph: Show branch graph',
 				'--since: Show commits since date',
 			],
-			icon: getFontAwesomeIcon('History', 'w-4 h-4'),
+			icon: getFontAwesomeIcon('History', 'w-6 h-6 text-sky-600'),
 		},
 		{
 			command: 'git diff',
@@ -292,7 +292,7 @@ export const GIT_COMMANDS: GitCommands = {
 				'--name-only: Show only file names',
 				'--stat: Show statistics',
 			],
-			icon: getFontAwesomeIcon('FileText', 'w-4 h-4'),
+			icon: getFontAwesomeIcon('FileText', 'w-6 h-6 text-lime-600'),
 		},
 		{
 			command: 'git remote',
@@ -311,7 +311,7 @@ export const GIT_COMMANDS: GitCommands = {
 				'remove: Remove remote',
 				'rename: Rename remote',
 			],
-			icon: getFontAwesomeIcon('Globe', 'w-4 h-4'),
+			icon: getFontAwesomeIcon('Globe', 'w-6 h-6 text-blue-600'),
 		},
 		{
 			command: 'git tag',
@@ -330,7 +330,7 @@ export const GIT_COMMANDS: GitCommands = {
 				'-d: Delete tag',
 				'--list: List tags with pattern',
 			],
-			icon: getFontAwesomeIcon('Tag', 'w-4 h-4'),
+			icon: getFontAwesomeIcon('Tag', 'w-6 h-6 text-yellow-600'),
 		},
 		{
 			command: 'git cherry-pick',
@@ -348,7 +348,7 @@ export const GIT_COMMANDS: GitCommands = {
 				'-n: No commit, just stage',
 				'--continue: Continue cherry-pick',
 			],
-			icon: getFontAwesomeIcon('Target', 'w-4 h-4'),
+			icon: getFontAwesomeIcon('Target', 'w-6 h-6 text-red-600'),
 		},
 		{
 			command: 'git fetch',
@@ -366,7 +366,7 @@ export const GIT_COMMANDS: GitCommands = {
 				'--prune: Remove deleted remote branches',
 				'--dry-run: Show what would be fetched',
 			],
-			icon: getFontAwesomeIcon('Download', 'w-4 h-4'),
+			icon: getFontAwesomeIcon('Download', 'w-6 h-6 text-indigo-600'),
 		},
 		{
 			command: 'git clean',
@@ -385,7 +385,7 @@ export const GIT_COMMANDS: GitCommands = {
 				'-n: Dry run',
 				'-x: Remove ignored files',
 			],
-			icon: getFontAwesomeIcon('Trash2', 'w-4 h-4'),
+			icon: getFontAwesomeIcon('Trash2', 'w-6 h-6 text-gray-600'),
 		},
 	],
 }

@@ -5,7 +5,7 @@ export const GITHUB_FEATURES: GitHubFeature[] = [
 	{
 		name: 'Pull Requests',
 		description: 'Review and merge code changes',
-		icon: getFontAwesomeIcon('GitPullRequest', 'w-5 h-5'),
+		icon: getFontAwesomeIcon('GitPullRequest', 'w-6 h-6 text-blue-600'),
 		benefits: [
 			'Code review',
 			'Discussion',
@@ -31,7 +31,7 @@ export const GITHUB_FEATURES: GitHubFeature[] = [
 	{
 		name: 'Issues',
 		description: 'Track bugs and feature requests',
-		icon: getFontAwesomeIcon('GitBranch', 'w-5 h-5'),
+		icon: getFontAwesomeIcon('GitBranch', 'w-6 h-6 text-emerald-600'),
 		benefits: ['Bug tracking', 'Feature requests', 'Labels', 'Milestones'],
 		color: 'emerald',
 		details:
@@ -52,7 +52,7 @@ export const GITHUB_FEATURES: GitHubFeature[] = [
 	{
 		name: 'Actions',
 		description: 'Automate workflows with CI/CD',
-		icon: getFontAwesomeIcon('Zap', 'w-5 h-5'),
+		icon: getFontAwesomeIcon('Zap', 'w-6 h-6 text-orange-600'),
 		benefits: [
 			'Automated testing',
 			'Deployment',
@@ -78,7 +78,7 @@ export const GITHUB_FEATURES: GitHubFeature[] = [
 	{
 		name: 'Projects',
 		description: 'Organize work with project boards',
-		icon: getFontAwesomeIcon('BookOpen', 'w-5 h-5'),
+		icon: getFontAwesomeIcon('BookOpen', 'w-6 h-6 text-purple-600'),
 		benefits: [
 			'Task management',
 			'Progress tracking',
@@ -104,7 +104,7 @@ export const GITHUB_FEATURES: GitHubFeature[] = [
 	{
 		name: 'Security',
 		description: 'Secure your code and dependencies',
-		icon: getFontAwesomeIcon('Shield', 'w-5 h-5'),
+		icon: getFontAwesomeIcon('Shield', 'w-6 h-6 text-red-600'),
 		benefits: [
 			'Dependency scanning',
 			'Secret detection',
@@ -130,7 +130,7 @@ export const GITHUB_FEATURES: GitHubFeature[] = [
 	{
 		name: 'Collaboration',
 		description: 'Work together effectively',
-		icon: getFontAwesomeIcon('Users', 'w-5 h-5'),
+		icon: getFontAwesomeIcon('Users', 'w-6 h-6 text-green-600'),
 		benefits: ['Team management', 'Permissions', 'Code review', 'Discussions'],
 		color: 'green',
 		details:
@@ -151,7 +151,7 @@ export const GITHUB_FEATURES: GitHubFeature[] = [
 	{
 		name: 'Packages',
 		description: 'Package and distribute your code',
-		icon: getFontAwesomeIcon('Package', 'w-5 h-5'),
+		icon: getFontAwesomeIcon('Package', 'w-6 h-6 text-indigo-600'),
 		benefits: [
 			'Package hosting',
 			'Version management',
@@ -177,7 +177,7 @@ export const GITHUB_FEATURES: GitHubFeature[] = [
 	{
 		name: 'Codespaces',
 		description: 'Cloud-based development environments',
-		icon: getFontAwesomeIcon('Cloud', 'w-5 h-5'),
+		icon: getFontAwesomeIcon('Cloud', 'w-6 h-6 text-cyan-600'),
 		benefits: [
 			'Instant development setup',
 			'Consistent environments',

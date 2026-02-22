@@ -29,7 +29,7 @@ export const WORKFLOWS: Workflow[] = [
 			'Regular integration with develop',
 			'Automated testing on all branches',
 		],
-		icon: getFontAwesomeIcon('GitBranch', 'w-5 h-5'),
+		icon: getFontAwesomeIcon('GitBranch', 'w-6 h-6 text-blue-600'),
 	},
 	{
 		name: 'GitHub Flow',
@@ -57,7 +57,7 @@ export const WORKFLOWS: Workflow[] = [
 			'Automated testing and deployment',
 			'Quick feedback loops',
 		],
-		icon: getFontAwesomeIcon('Zap', 'w-5 h-5'),
+		icon: getFontAwesomeIcon('Zap', 'w-6 h-6 text-yellow-600'),
 	},
 	{
 		name: 'Trunk-based Development',
@@ -84,7 +84,7 @@ export const WORKFLOWS: Workflow[] = [
 			'Feature flags for incomplete work',
 			'Strong code review culture',
 		],
-		icon: getFontAwesomeIcon('Target', 'w-5 h-5'),
+		icon: getFontAwesomeIcon('Target', 'w-6 h-6 text-emerald-600'),
 	},
 	{
 		name: 'Forking Workflow',
@@ -116,7 +116,7 @@ export const WORKFLOWS: Workflow[] = [
 			'Write clear pull request descriptions',
 			'Follow project contribution guidelines',
 		],
-		icon: getFontAwesomeIcon('Users', 'w-5 h-5'),
+		icon: getFontAwesomeIcon('Users', 'w-6 h-6 text-purple-600'),
 	},
 	{
 		name: 'GitLab Flow',
@@ -152,6 +152,6 @@ export const WORKFLOWS: Workflow[] = [
 			'Monitor environment health',
 			'Use GitLab CI/CD features',
 		],
-		icon: getFontAwesomeIcon('Server', 'w-5 h-5'),
+		icon: getFontAwesomeIcon('Server', 'w-6 h-6 text-cyan-600'),
 	},
 ]

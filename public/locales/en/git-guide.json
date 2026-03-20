@@ -5,12 +5,7 @@
 	"tabs_github_features": "GitHub Features",
 	"tabs_workflows": "Workflows",
 	"tabs_best_practices": "Best Practices",
-	"commands_basic_title": "Basic Commands",
-	"commands_basic_description": "Essential Git commands for basic operations",
-	"commands_advanced_title": "Advanced Commands",
-	"commands_advanced_description": "Essential Git commands for advanced operations",
-	"commands_workflow_title": "Workflow Commands",
-	"commands_workflow_description": "Essential Git commands for workflow operations",
+
 	"command_copy": "Copy command",
 	"command_use_cases": "Use Cases:",
 	"command_options": "Common Options:",

@@ -34,9 +34,9 @@ export function GitCommandsSection({ commands }: GitCommandsSectionProps) {
 	}
 
 	return (
-		<div className="space-y-6">
+		<div className="space-y-6 ">
 			{Object.entries(commands).map(([category, commandList]) => (
-				<Card key={category} className="overflow-hidden">
+				<Card key={category} className="overflow-hidden border-none">
 					<CardHeader>
 						<CardTitle className="flex items-center gap-3 text-2xl font-bold text-gray-900 dark:text-white">
 							{getFontAwesomeIcon('Terminal', 'w-7 h-7 text-blue-600 dark:text-blue-400')}
@@ -51,7 +51,7 @@ export function GitCommandsSection({ commands }: GitCommandsSectionProps) {
 							{commandList.map((cmd: GitCommand, index: number) => (
 								<Card
 									key={index}
-									className="transition-all duration-300 ease-linear hover:border-l-4 hover:border-l-cyan-500 hover:shadow-lg hover:bg-gradient-to-r from-purple-50 to-cyan-50 hover:dark:from-cyan-900/20 hover:dark:to-blue-900/20"
+									className="transition-all duration-300 ease-linear hover:border-l-4 hover:border-l-cyan-500 hover:shadow-lg  hover:dark:from-cyan-900/20 hover:dark:to-blue-900/20"
 								>
 									<CardHeader className="pb-4">
 										<div className="flex items-center justify-between">
@@ -114,12 +114,12 @@ export function GitCommandsSection({ commands }: GitCommandsSectionProps) {
 												{cmd.details}
 											</p>
 
-											<div className="space-y-3">
+											<div className="space-y-3 pt-3">
 												<h4 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
-													{getFontAwesomeIcon('ListCheck', 'w-5 h-5 text-green-600 dark:text-green-400')}
+													
 													Use Cases:
 												</h4>
-												<ul className="space-y-2 text-base text-gray-700 dark:text-gray-300">
+												<ul className="space-y-2 text-base text-gray-700 dark:text-gray-300 lg:ps-4">
 													{cmd.useCases.map((useCase, useCaseIndex) => (
 														<li
 															key={useCaseIndex}
@@ -135,9 +135,9 @@ export function GitCommandsSection({ commands }: GitCommandsSectionProps) {
 												</ul>
 											</div>
 
-											<div className="space-y-3">
+											<div className="space-y-3 pt-3">
 												<h4 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
-													{getFontAwesomeIcon('Code', 'w-5 h-5 text-purple-600 dark:text-purple-400')}
+													{getFontAwesomeIcon('Sliders', 'w-5 h-5 text-purple-600 dark:text-purple-400')}
 													Common Options:
 												</h4>
 												<div className="grid gap-3">
@@ -148,7 +148,7 @@ export function GitCommandsSection({ commands }: GitCommandsSectionProps) {
 														>
 															<div className="flex items-center gap-3">
 																{getFontAwesomeIcon('Terminal', 'w-5 h-5 text-purple-600 dark:text-purple-400 flex-shrink-0')}
-																<code className="font-mono text-base font-semibold text-gray-800 dark:text-gray-200 flex-1">
+																<code className="font-mono text-base  text-gray-800 dark:text-gray-200 flex-1">
 																	{option}
 																</code>
 															</div>

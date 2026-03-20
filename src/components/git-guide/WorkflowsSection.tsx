@@ -36,7 +36,7 @@ export function WorkflowsSection({ workflows }: WorkflowsSectionProps) {
 			{workflows.map((workflow, index) => (
 				<Card
 					key={index}
-					className="overflow-hidden transition-all duration-300 hover:shadow-lg"
+					className="overflow-hidden transition-all duration-300 ease-linear hover:border-l-4 hover:border-l-cyan-500 hover:shadow-lg  hover:dark:from-cyan-900/20 hover:dark:to-blue-900/20"
 				>
 					<CardHeader>
 						<CardTitle className="flex items-center gap-3 text-2xl font-bold text-gray-900 dark:text-white">
@@ -57,7 +57,7 @@ export function WorkflowsSection({ workflows }: WorkflowsSectionProps) {
 						</div>
 
 						<div className="grid gap-6 md:grid-cols-2">
-							<div>
+							<div className="space-y-4 pb-4">
 								<h4 className="mb-4 text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
 									{getFontAwesomeIcon('List', 'w-5 h-5 text-blue-600 dark:text-blue-400')}
 									Workflow Steps:
@@ -96,10 +96,10 @@ export function WorkflowsSection({ workflows }: WorkflowsSectionProps) {
 								</ol>
 							</div>
 
-							<div className="space-y-4">
-								<div>
+							<div className="space-y-4 pb-4">
+								<div className="space-y-2 pb-4">
 									<h4 className="mb-3 font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-2 text-lg">
-										{getFontAwesomeIcon('CheckCircle', 'w-5 h-5 text-emerald-600 dark:text-emerald-400')}
+
 										Pros:
 									</h4>
 									<ul className="space-y-2 text-base">
@@ -116,7 +116,7 @@ export function WorkflowsSection({ workflows }: WorkflowsSectionProps) {
 								</div>
 								<div>
 									<h4 className="mb-3 font-bold text-orange-600 dark:text-orange-400 flex items-center gap-2 text-lg">
-										{getFontAwesomeIcon('AlertTriangle', 'w-5 h-5 text-orange-600 dark:text-orange-400')}
+
 										Cons:
 									</h4>
 									<ul className="space-y-2 text-base">
@@ -135,16 +135,16 @@ export function WorkflowsSection({ workflows }: WorkflowsSectionProps) {
 						</div>
 
 						<div className="grid gap-4 md:grid-cols-2">
-							<div>
+							<div className="space-y-4 pb-4">
 								<h4 className="mb-3 font-bold text-gray-900 dark:text-white flex items-center gap-2 text-lg">
-									{getFontAwesomeIcon('ArrowRight', 'w-5 h-5 text-blue-600 dark:text-blue-400')}
+
 									Use Cases:
 								</h4>
 								<ul className="space-y-2 text-base text-gray-700 dark:text-gray-300">
 									{workflow.useCases.map((useCase, useCaseIndex) => (
 										<li key={useCaseIndex} className="flex items-start gap-3">
 											{getFontAwesomeIcon(
-												'ArrowRight',
+												'Lightbulb',
 												'w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5 flex-shrink-0',
 											)}
 											<span className="leading-relaxed">{useCase}</span>
@@ -153,9 +153,9 @@ export function WorkflowsSection({ workflows }: WorkflowsSectionProps) {
 								</ul>
 							</div>
 
-							<div>
+							<div className="space-y-4 pb-4">
 								<h4 className="mb-3 font-bold text-gray-900 dark:text-white flex items-center gap-2 text-lg">
-									{getFontAwesomeIcon('Lightbulb', 'w-5 h-5 text-yellow-600 dark:text-yellow-400')}
+
 									Best Practices:
 								</h4>
 								<ul className="space-y-2 text-base text-gray-700 dark:text-gray-300">
@@ -168,8 +168,8 @@ export function WorkflowsSection({ workflows }: WorkflowsSectionProps) {
 										return (
 											<li key={practiceIndex} className="flex items-start gap-3 group relative">
 												{getFontAwesomeIcon(
-													'Lightbulb',
-													'w-5 h-5 text-yellow-600 dark:text-yellow-400 mt-0.5 flex-shrink-0',
+													'Star',
+													'w-5 h-5 text-cyan-600 dark:text-yellow-400 mt-0.5 flex-shrink-0',
 												)}
 												<span className="leading-relaxed flex-1">{practice}</span>
 												{codeToCopy && (

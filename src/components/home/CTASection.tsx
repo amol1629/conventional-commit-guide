@@ -29,7 +29,7 @@ export function CTASection() {
 				</p>
 
 				<div
-					className="flex flex-col justify-center gap-3 mb-8 sm:gap-4 lg:gap-6 sm:mb-10 lg:mb-12 sm:flex-row"
+					className="flex flex-wrap justify-center gap-3 mb-8 sm:gap-4 lg:gap-6 sm:mb-10 lg:mb-12 sm:flex-row"
 					role="group"
 					aria-label="Call to action buttons"
 				>

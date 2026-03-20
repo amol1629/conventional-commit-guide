@@ -36,7 +36,7 @@ export function BestPracticesSection() {
 
 	return (
 		<div className="grid gap-6">
-			<Card>
+			<Card className="overflow-hidden transition-all duration-300 ease-linear hover:border-l-4 hover:border-l-cyan-500 hover:shadow-lg  hover:dark:from-cyan-900/20 hover:dark:to-blue-900/20">
 				<CardHeader>
 					<CardTitle className="flex items-center gap-3 text-2xl font-bold text-gray-900 dark:text-white">
 						<div className="flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-blue-900/30 dark:via-purple-900/30 dark:to-pink-900/30 border-2 border-blue-200 dark:border-blue-800 shadow-md hover:shadow-lg transition-all">
@@ -52,10 +52,7 @@ export function BestPracticesSection() {
 					<div className="grid gap-5 md:grid-cols-2">
 						<div className="space-y-4">
 							<h4 className="font-bold text-green-600 dark:text-green-400 flex items-center gap-2 text-lg">
-								{getFontAwesomeIcon(
-									'CheckCircle',
-									'w-5 h-5 text-green-600 dark:text-green-400',
-								)}
+
 								Do&apos;s
 							</h4>
 							<ul className="space-y-2.5 text-base">
@@ -88,10 +85,7 @@ export function BestPracticesSection() {
 						</div>
 						<div className="space-y-4">
 							<h4 className="font-bold text-red-600 dark:text-red-400 flex items-center gap-2 text-lg">
-								{getFontAwesomeIcon(
-									'CircleXmark',
-									'w-5 h-5 text-red-600 dark:text-red-400',
-								)}
+
 								Don&apos;ts
 							</h4>
 							<ul className="space-y-2.5 text-base">
@@ -126,7 +120,7 @@ export function BestPracticesSection() {
 				</CardContent>
 			</Card>
 
-			<Card>
+			<Card className="overflow-hidden transition-all duration-300 ease-linear hover:border-l-4 hover:border-l-cyan-500 hover:shadow-lg  hover:dark:from-cyan-900/20 hover:dark:to-blue-900/20">
 				<CardHeader>
 					<CardTitle className="flex items-center gap-3 text-2xl font-bold text-gray-900 dark:text-white">
 						<div className="flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 dark:from-purple-900/30 dark:via-pink-900/30 dark:to-blue-900/30 border-2 border-purple-200 dark:border-purple-800 shadow-md hover:shadow-lg transition-all">
@@ -142,10 +136,7 @@ export function BestPracticesSection() {
 					<div className="grid gap-5 md:grid-cols-2">
 						<div className="space-y-4">
 							<h4 className="font-bold text-green-600 dark:text-green-400 flex items-center gap-2 text-lg">
-								{getFontAwesomeIcon(
-									'CheckCircle',
-									'w-5 h-5 text-green-600 dark:text-green-400',
-								)}
+
 								Best Practices
 							</h4>
 							<ul className="space-y-2.5 text-base">
@@ -154,7 +145,7 @@ export function BestPracticesSection() {
 									return (
 										<li key={index} className="flex items-start gap-3 text-gray-700 dark:text-gray-300 group relative">
 											{getFontAwesomeIcon(
-												'CheckCircle',
+												'Star',
 												'w-5 h-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0',
 											)}
 											<span className="leading-relaxed flex-1">{item}</span>
@@ -178,10 +169,7 @@ export function BestPracticesSection() {
 						</div>
 						<div className="space-y-4">
 							<h4 className="font-bold text-blue-600 dark:text-blue-400 flex items-center gap-2 text-lg">
-								{getFontAwesomeIcon(
-									'Lightbulb',
-									'w-5 h-5 text-yellow-600 dark:text-yellow-400',
-								)}
+
 								Pro Tips
 							</h4>
 							<ul className="space-y-2.5 text-base">
@@ -191,7 +179,7 @@ export function BestPracticesSection() {
 										<li key={index} className="flex items-start gap-3 text-gray-700 dark:text-gray-300 group relative">
 											{getFontAwesomeIcon(
 												'Lightbulb',
-												'w-5 h-5 text-yellow-600 dark:text-yellow-400 mt-0.5 flex-shrink-0',
+												'w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5 flex-shrink-0',
 											)}
 											<span className="leading-relaxed flex-1">{item}</span>
 											{gitCommand && (
@@ -216,7 +204,7 @@ export function BestPracticesSection() {
 				</CardContent>
 			</Card>
 
-			<Card>
+			<Card className="overflow-hidden transition-all duration-300 ease-linear hover:border-l-4 hover:border-l-cyan-500 hover:shadow-lg  hover:dark:from-cyan-900/20 hover:dark:to-blue-900/20">
 				<CardHeader>
 					<CardTitle className="flex items-center gap-3 text-2xl font-bold text-gray-900 dark:text-white">
 						<div className="flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 dark:from-emerald-900/30 dark:via-green-900/30 dark:to-teal-900/30 border-2 border-emerald-200 dark:border-emerald-800 shadow-md hover:shadow-lg transition-all">
@@ -232,10 +220,7 @@ export function BestPracticesSection() {
 					<div className="grid gap-6 md:grid-cols-2">
 						<div className="space-y-4">
 							<h4 className="font-bold text-green-600 dark:text-green-400 flex items-center gap-2 text-lg">
-								{getFontAwesomeIcon(
-									'CheckCircle',
-									'w-5 h-5 text-green-600 dark:text-green-400',
-								)}
+
 								Collaboration Best Practices
 							</h4>
 							<ul className="space-y-2.5 text-base">
@@ -270,10 +255,7 @@ export function BestPracticesSection() {
 						</div>
 						<div className="space-y-4">
 							<h4 className="font-bold text-blue-600 dark:text-blue-400 flex items-center gap-2 text-lg">
-								{getFontAwesomeIcon(
-									'Lightbulb',
-									'w-5 h-5 text-yellow-600 dark:text-yellow-400',
-								)}
+
 								Team Tips
 							</h4>
 							<ul className="space-y-2.5 text-base">
@@ -283,7 +265,7 @@ export function BestPracticesSection() {
 										<li key={index} className="flex items-start gap-3 text-gray-700 dark:text-gray-300 group relative">
 											{getFontAwesomeIcon(
 												'Lightbulb',
-												'w-5 h-5 text-yellow-600 dark:text-yellow-400 mt-0.5 flex-shrink-0',
+												'w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5 flex-shrink-0',
 											)}
 											<span className="leading-relaxed flex-1">{item}</span>
 											{gitCommand && (
@@ -308,7 +290,7 @@ export function BestPracticesSection() {
 				</CardContent>
 			</Card>
 
-			<Card>
+			<Card className="overflow-hidden transition-all duration-300 ease-linear hover:border-l-4 hover:border-l-cyan-500 hover:shadow-lg  hover:dark:from-cyan-900/20 hover:dark:to-blue-900/20">
 				<CardHeader>
 					<CardTitle className="flex items-center gap-3 text-2xl font-bold text-gray-900 dark:text-white">
 						<div className="flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-red-50 via-pink-50 to-orange-50 dark:from-red-900/30 dark:via-pink-900/30 dark:to-orange-900/30 border-2 border-red-200 dark:border-red-800 shadow-md hover:shadow-lg transition-all">
@@ -324,10 +306,7 @@ export function BestPracticesSection() {
 					<div className="grid gap-5 md:grid-cols-2">
 						<div className="space-y-4">
 							<h4 className="font-bold text-green-600 dark:text-green-400 flex items-center gap-2 text-lg">
-								{getFontAwesomeIcon(
-									'CheckCircle',
-									'w-5 h-5 text-green-600 dark:text-green-400',
-								)}
+
 								Security Essentials
 							</h4>
 							<ul className="space-y-2.5 text-base">
@@ -360,10 +339,7 @@ export function BestPracticesSection() {
 						</div>
 						<div className="space-y-4">
 							<h4 className="font-bold text-blue-600 dark:text-blue-400 flex items-center gap-2 text-lg">
-								{getFontAwesomeIcon(
-									'Key',
-									'w-5 h-5 text-blue-600 dark:text-blue-400',
-								)}
+
 								Advanced Security
 							</h4>
 							<ul className="space-y-2.5 text-base">
@@ -398,7 +374,7 @@ export function BestPracticesSection() {
 				</CardContent>
 			</Card>
 
-			<Card>
+			<Card className="overflow-hidden transition-all duration-300 ease-linear hover:border-l-4 hover:border-l-cyan-500 hover:shadow-lg  hover:dark:from-cyan-900/20 hover:dark:to-blue-900/20"	>
 				<CardHeader>
 					<CardTitle className="flex items-center gap-3 text-2xl font-bold text-gray-900 dark:text-white">
 						<div className="flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-orange-50 via-yellow-50 to-amber-50 dark:from-orange-900/30 dark:via-yellow-900/30 dark:to-amber-900/30 border-2 border-orange-200 dark:border-orange-800 shadow-md hover:shadow-lg transition-all">
@@ -414,10 +390,7 @@ export function BestPracticesSection() {
 					<div className="grid gap-5 md:grid-cols-2">
 						<div className="space-y-4">
 							<h4 className="font-bold text-green-600 dark:text-green-400 flex items-center gap-2 text-lg">
-								{getFontAwesomeIcon(
-									'Zap',
-									'w-5 h-5 text-orange-600 dark:text-orange-400',
-								)}
+
 								Performance Tips
 							</h4>
 							<ul className="space-y-2.5 text-base">
@@ -464,7 +437,7 @@ export function BestPracticesSection() {
 									return (
 										<li key={index} className="flex items-start gap-3 text-gray-700 dark:text-gray-300 group relative">
 											{getFontAwesomeIcon(
-												'Wrench',
+												'Lightbulb',
 												'w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5 flex-shrink-0',
 											)}
 											<span className="leading-relaxed flex-1">{item}</span>

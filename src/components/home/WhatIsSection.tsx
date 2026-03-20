@@ -33,7 +33,7 @@ Closes #456`
 
 	return (
 		<section
-			className="px-4 py-20 bg-white sm:px-6 lg:px-8 xl:px-12 2xl:px-16 dark:bg-slate-900"
+			className="px-4 py-20 bg-gradient-to-br from-white via-gray-50 to-green-50 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 dark:bg-slate-900"
 			aria-labelledby="whatis-title"
 		>
 			<div className="mx-auto max-w-7xl">
@@ -54,7 +54,7 @@ Closes #456`
 					</p>
 				</div>
 
-				<div className="grid items-center gap-6 sm:gap-8 lg:gap-12 md:grid-cols-2">
+				<div className="grid items-center gap-6 sm:gap-8 lg:gap-12  lg:grid-cols-2">
 					<div className="space-y-4 sm:space-y-6">
 						<h3 className="text-xl font-bold text-gray-900 sm:text-2xl lg:text-3xl dark:text-white dark:bg-gradient-to-r dark:from-blue-400 dark:to-purple-400 dark:bg-clip-text dark:text-transparent">
 							Industry Benefits

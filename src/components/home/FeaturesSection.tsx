@@ -75,6 +75,7 @@ export function FeaturesSection() {
 	const [currentIndex, setCurrentIndex] = useState(0)
 	const [isHovered, setIsHovered] = useState(false)
 	const [isTransitioning, setIsTransitioning] = useState(false)
+	const [cardsToShow, setCardsToShow] = useState<1 | 2 | 3>(3)
 
 	// Auto-play functionality
 	useEffect(() => {
@@ -91,6 +92,23 @@ export function FeaturesSection() {
 		return () => clearInterval(interval)
 	}, [isHovered])
 
+	// Responsive card count:
+	// - <1050px: 1 card
+	// - 1050px..1300px: 2 cards
+	// - >1300px: 3 cards
+	useEffect(() => {
+		const update = () => {
+			const width = window.innerWidth
+			if (width < 1050) setCardsToShow(1)
+			else if (width <= 1300) setCardsToShow(2)
+			else setCardsToShow(3)
+		}
+
+		update()
+		window.addEventListener('resize', update)
+		return () => window.removeEventListener('resize', update)
+	}, [])
+
 	const goToSlide = (index: number) => {
 		if (index === currentIndex) return
 
@@ -103,6 +121,18 @@ export function FeaturesSection() {
 
 	// Get visible cards (current and adjacent ones)
 	const getVisibleCards = () => {
+		if (cardsToShow === 1) {
+			return [{ ...features[currentIndex], position: 0 }]
+		}
+
+		if (cardsToShow === 2) {
+			const prevIndex = (currentIndex - 1 + features.length) % features.length
+			return [
+				{ ...features[prevIndex], position: -1 },
+				{ ...features[currentIndex], position: 0 },
+			]
+		}
+
 		const visible = []
 		for (let i = -1; i <= 1; i++) {
 			const index = (currentIndex + i + features.length) % features.length

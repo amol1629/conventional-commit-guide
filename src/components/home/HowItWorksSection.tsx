@@ -30,7 +30,7 @@ export function HowItWorksSection() {
 						role="listitem"
 					>
 						<div
-							className="flex items-center justify-center w-16 h-16 mx-auto mb-6 text-2xl font-bold text-white transition-all duration-300 bg-blue-600 rounded-lg dark:bg-blue-500 dark:shadow-lg dark:shadow-blue-500/25 hover:scale-110"
+							className="flex items-center justify-center w-16 h-16 mx-auto mb-6 text-2xl font-bold text-white transition-all duration-300 bg-blue-600 dark:bg-blue-500 dark:shadow-lg dark:shadow-blue-500/25 hover:scale-110 rounded-full"
 							aria-label="Step 1"
 						>
 							1
@@ -50,7 +50,7 @@ export function HowItWorksSection() {
 						role="listitem"
 					>
 						<div
-							className="flex items-center justify-center w-16 h-16 mx-auto mb-6 text-2xl font-bold text-white transition-all duration-300 bg-green-600 rounded-lg dark:bg-green-500 dark:shadow-lg dark:shadow-green-500/25 hover:scale-110"
+							className="flex items-center justify-center w-16 h-16 mx-auto mb-6 text-2xl font-bold text-white transition-all duration-300 bg-green-600 rounded-full dark:bg-green-500 dark:shadow-lg dark:shadow-green-500/25 hover:scale-110"
 							aria-label="Step 2"
 						>
 							2
@@ -69,7 +69,7 @@ export function HowItWorksSection() {
 						role="listitem"
 					>
 						<div
-							className="flex items-center justify-center w-16 h-16 mx-auto mb-6 text-2xl font-bold text-white transition-all duration-300 bg-purple-600 rounded-lg dark:bg-purple-500 dark:shadow-lg dark:shadow-purple-500/25 hover:scale-110"
+							className="flex items-center justify-center w-16 h-16 mx-auto mb-6 text-2xl font-bold text-white transition-all duration-300 bg-purple-600 rounded-full dark:bg-purple-500 dark:shadow-lg dark:shadow-purple-500/25 hover:scale-110"
 							aria-label="Step 3"
 						>
 							3

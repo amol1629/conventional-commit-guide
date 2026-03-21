@@ -86,7 +86,7 @@ export function CommitGenerator() {
 		return commit
 	}, [type, scope, description, body, footer, isBreaking])
 
-	// AI analysis — debounced 800ms after user stops typing
+	// AI analysis — debounced 1500ms after user stops typing
 	useEffect(() => {
 		if (!generateCommit) {
 			setAiAnalysis({ loading: false, issues: [], corrected: null, alternatives: null, isPerfect: false, scopeSuggestion: null, bodyHint: null, footerHint: null, error: null })
@@ -96,7 +96,7 @@ export function CommitGenerator() {
 		const timer = setTimeout(async () => {
 			const result = await analyzeWithAI(generateCommit, { type, scope, description, isBreaking })
 			setAiAnalysis(result)
-		}, 800)
+		}, 1500)
 		return () => clearTimeout(timer)
 	}, [generateCommit])
 
@@ -117,8 +117,50 @@ export function CommitGenerator() {
 		setAiAnalysis({ loading: false, issues: [], corrected: null, alternatives: null, isPerfect: false, scopeSuggestion: null, bodyHint: null, footerHint: null, error: null })
 	}
 
+	// Parse a full commit string (subject + optional body + optional footer)
+	// and fill all form fields automatically
+	const applyCommit = (commitStr: string) => {
+		const lines = commitStr.split('\n')
+		const subject = lines[0].trim()
+
+		// Parse subject: type(scope)!: description
+		const subjectRe = /^([a-zA-Z]+)(?:\(([^)]+)\))?(!)?: (.+)/
+		const match = subject.match(subjectRe)
+
+		if (match) {
+			const [, parsedType, parsedScope, bang, parsedDesc] = match
+			setType(parsedType ?? '')
+			setScope(parsedScope ?? '')
+			setIsBreaking(bang === '!')
+			setDescription(parsedDesc ?? '')
+		}
+
+		// Split remaining lines into body and footer sections
+		// Footer starts at the first line matching a known footer token
+		const rest = lines.slice(2) // skip subject + blank line
+		const footerTokenRe = /^(BREAKING[- ]CHANGE|Closes?|Fixes?|Resolves?|Refs?|Co-authored-by|Reviewed-by|Signed-off-by)[ :]#?/i
+		const footerStart = rest.findIndex(l => footerTokenRe.test(l.trim()))
+
+		if (footerStart === -1) {
+			// No footer — everything after subject is body
+			setBody(rest.join('\n').trim())
+			setFooter('')
+		} else {
+			setBody(rest.slice(0, footerStart).join('\n').trim())
+			setFooter(rest.slice(footerStart).join('\n').trim())
+		}
+
+		toast.success('Applied! Form updated with the suggested commit.')
+	}
+
 	const selectedType = COMMIT_TYPES.find((t) => t.value === type)
 	const validation = generateCommit ? validateCommitMessage(generateCommit) : null
+
+	// True when user has applied the AI suggestion — triggers "other variations" mode
+	const matchesCorrected =
+		!!aiAnalysis.corrected &&
+		!!generateCommit &&
+		generateCommit.trim().split('\n')[0].toLowerCase() === aiAnalysis.corrected.trim().split('\n')[0].toLowerCase()
 
 	if (!mounted) {
 		return (
@@ -213,68 +255,16 @@ export function CommitGenerator() {
 
 						{/* Description */}
 						<div className="space-y-1.5">
-							<div className="flex items-center justify-between">
-								<Label htmlFor="description" className="text-[13px] sm:text-[13.5px] lg:text-[14px] font-medium">
-									Description <span className="text-red-500">*</span>
-								</Label>
-								{/* Live char counter */}
-								{description.length > 0 && (() => {
-									// Subject = type + (scope) + ! + ": " + description
-									const subjectLen = type.length
-										+ (scope ? scope.length + 2 : 0)
-										+ (isBreaking ? 1 : 0)
-										+ 2 // ": "
-										+ description.length
-
-									const color =
-										subjectLen > 72 ? 'text-red-500 font-semibold' :
-											subjectLen > 50 ? 'text-yellow-600 font-semibold' :
-												'text-green-600'
-									return (
-										<span className={`text-[11.5px] tabular-nums transition-colors duration-150 ${color}`}>
-											{subjectLen}/72
-										</span>
-									)
-								})()}
-							</div>
+							<Label htmlFor="description" className="text-[13px] sm:text-[13.5px] lg:text-[14px] font-medium">
+								Description <span className="text-red-500">*</span>
+							</Label>
 							<Input
 								id="description"
 								placeholder="e.g., add OAuth2 login with Google provider"
 								value={description}
 								onChange={(e) => setDescription(e.target.value)}
-								className={[
-									'text-[16px] sm:text-[14px] h-11 sm:h-10 transition-colors duration-150',
-									(() => {
-										const subjectLen = type.length
-											+ (scope ? scope.length + 2 : 0)
-											+ (isBreaking ? 1 : 0) + 2
-											+ description.length
-										return subjectLen > 72
-											? 'border-red-400 focus:border-red-500'
-											: subjectLen > 50
-												? 'border-yellow-400 focus:border-yellow-500'
-												: ''
-									})(),
-								].join(' ')}
+								className="text-[16px] sm:text-[14px] h-11 sm:h-10"
 							/>
-							{/* Overflow hint */}
-							{(() => {
-								const subjectLen = type.length
-									+ (scope ? scope.length + 2 : 0)
-									+ (isBreaking ? 1 : 0) + 2
-									+ description.length
-								if (subjectLen > 72) return (
-									<p className="text-[11.5px] text-red-500 leading-snug">
-										Subject is {subjectLen} chars — {subjectLen - 72} over the 72-char limit. Move detail to the body.
-									</p>
-								)
-								if (subjectLen > 50) return (
-									<p className="text-[11.5px] text-yellow-600 leading-snug">
-										Subject is {subjectLen} chars — {subjectLen - 50} over the ideal 50. Acceptable but trimming helps.
-									</p>
-								)
-								return null
-							})()}
 						</div>
 
 						{/* Breaking */}
@@ -533,29 +523,38 @@ export function CommitGenerator() {
 											</div>
 										)}
 
-										{/* ── PERFECT MODE: commit matches AI suggestion ── */}
+										{/* ── PERFECT MODE ── */}
 										{!aiAnalysis.loading && !aiAnalysis.error && aiAnalysis.isPerfect && (
 											<div className="space-y-2.5">
-												{/* Congrats message */}
+
+												{/* Congrats — different message if user applied the suggestion */}
 												<div className="flex items-start gap-2 px-2.5 py-2 bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800 rounded-md">
 													{getFontAwesomeIcon('CheckCircle', 'w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0 mt-[1px]')}
 													<p className="text-[12px] text-emerald-700 dark:text-emerald-300 leading-snug">
-														<span className="font-semibold">Great commit message!</span> It is clear, specific, uses the right type and imperative mood.
+														{matchesCorrected
+															? <><span className="font-semibold">You applied the suggestion!</span> Here are other valid variations you could use instead.</>
+															: <><span className="font-semibold">Great commit message!</span> It is clear, specific, uses the right type and imperative mood.</>
+														}
 													</p>
 												</div>
 
-												{/* Alternatives */}
+												{/* Alternatives — always clickable */}
 												{aiAnalysis.alternatives && aiAnalysis.alternatives.length > 0 && (
 													<div>
 														<p className="text-[11px] text-indigo-500 dark:text-indigo-400 font-semibold mb-1.5 flex items-center gap-1.5">
 															{getFontAwesomeIcon('Lightbulb', 'w-3 h-3 shrink-0')}
-															Other valid variations:
+															{matchesCorrected ? 'Other equally valid variations:' : 'Other valid variations:'}
 														</p>
-														<ul className="space-y-1.5">
+														<ul className="space-y-1">
 															{aiAnalysis.alternatives.map((alt, i) => (
-																<li key={i} className="flex items-start gap-2">
+																<li key={i}
+																	className="flex items-start gap-2 group cursor-pointer px-2 py-1.5 -mx-2 rounded-md hover:bg-indigo-50 dark:hover:bg-indigo-900/30 transition-colors duration-150"
+																	onClick={() => applyCommit(alt)}
+																	title="Click to apply this variation"
+																>
 																	<span className="mt-[3px] text-indigo-300 dark:text-indigo-600 shrink-0 text-[10px]">✦</span>
-																	<code className="text-[12px] sm:text-[11.5px] text-indigo-600 dark:text-indigo-300 font-mono leading-snug">{alt}</code>
+																	<code className="text-[12px] sm:text-[11.5px] text-indigo-600 dark:text-indigo-300 font-mono leading-snug flex-1 whitespace-pre-wrap">{alt}</code>
+																	<span className="text-[10px] text-indigo-400 opacity-0 group-hover:opacity-100 transition-opacity shrink-0 mt-[2px]">apply ↗</span>
 																</li>
 															))}
 														</ul>
@@ -619,14 +618,26 @@ export function CommitGenerator() {
 											</div>
 										)}
 
-										{/* Best version */}
+										{/* Best version — with Apply button */}
 										{!aiAnalysis.loading && !aiAnalysis.isPerfect && aiAnalysis.corrected && (
 											<div className="pt-2 border-t border-indigo-100 dark:border-indigo-800">
-												<p className="text-[11px] text-indigo-500 dark:text-indigo-400 font-semibold mb-1.5 flex items-center gap-1.5">
-													{getFontAwesomeIcon('Star', 'w-3 h-3 text-indigo-500 dark:text-indigo-400 shrink-0')}
-													Best version:
-												</p>
-												<code className="text-[12px] sm:text-[11.5px] text-indigo-700 dark:text-indigo-300 font-mono bg-indigo-50 dark:bg-indigo-900/40 px-2.5 py-2 rounded-md block whitespace-pre-wrap leading-relaxed">
+												<div className="flex items-center justify-between mb-1.5">
+													<p className="text-[11px] text-indigo-500 dark:text-indigo-400 font-semibold flex items-center gap-1.5">
+														{getFontAwesomeIcon('Star', 'w-3 h-3 text-indigo-500 dark:text-indigo-400 shrink-0')}
+														Best version:
+													</p>
+													<button
+														onClick={() => applyCommit(aiAnalysis.corrected!)}
+														className="flex items-center gap-1 px-2 py-0.5 text-[11px] font-semibold text-indigo-600 dark:text-indigo-300 bg-indigo-100 dark:bg-indigo-900/50 hover:bg-indigo-200 dark:hover:bg-indigo-800 rounded transition-colors duration-150 touch-manipulation"
+													>
+														{getFontAwesomeIcon('ArrowRight', 'w-2.5 h-2.5 shrink-0')}
+														Apply
+													</button>
+												</div>
+												<code className="text-[12px] sm:text-[11.5px] text-indigo-700 dark:text-indigo-300 font-mono bg-indigo-50 dark:bg-indigo-900/40 px-2.5 py-2 rounded-md block whitespace-pre-wrap leading-relaxed cursor-pointer hover:bg-indigo-100 dark:hover:bg-indigo-900/60 transition-colors duration-150"
+													onClick={() => applyCommit(aiAnalysis.corrected!)}
+													title="Click to apply this suggestion"
+												>
 													{aiAnalysis.corrected}
 												</code>
 											</div>

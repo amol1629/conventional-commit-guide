@@ -24,8 +24,9 @@ export default async function Generator() {
 				<AnimatedBackground>
 					<div className="container relative max-w-6xl px-4 py-16 mx-auto">
 						<AnimatedHeader
-							badge="AI-Powered Tool"
+							// badge="AI-Powered Tool"
 							title="Commit Message Generator"
+							className=' text-green-200'
 							description="Generate perfect conventional commit messages with our intelligent AI-powered tool"
 						/>
 						<div className="animate-slide-up">

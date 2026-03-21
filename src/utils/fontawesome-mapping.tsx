@@ -73,11 +73,15 @@ import {
 	faUserCog,
 	faUsers,
 	faX,
+	faCodeCommit,
+	faInfoCircle
 } from '@fortawesome/free-solid-svg-icons'
 
 // Font Awesome icon mapping for all Lucide icons used in the project
 export const fontAwesomeIconMap: Record<string, IconDefinition> = {
 	// Basic navigation and UI
+	InfoCircle: faInfoCircle,
+	CodeCommit: faCodeCommit,
 	Sliders: faSliders,
 	Gear: faGear,
 	Key: faKey,

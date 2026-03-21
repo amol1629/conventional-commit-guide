@@ -19,10 +19,14 @@ export default function AnimatedHeader({
 					{badge}
 				</div>
 			)}
-			<h1 className="mb-4 text-4xl font-bold text-gray-900 dark:text-white animate-slide-up">
+			<h1 className="mb-4 text-4xl font-bold leading-tight tracking-tight
+	bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500
+	bg-clip-text text-transparent
+	drop-shadow-sm
+	animate-slide-up">
 				{title}
 			</h1>
-			<p className="max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-300 animate-slide-up">
+			<p className="max-w-3xl mx-auto text-lg leading-relaxed text-slate-600 dark:text-slate-400 animate-slide-up">
 				{description}
 			</p>
 		</div>

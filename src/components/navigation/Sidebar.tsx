@@ -48,7 +48,7 @@ export function Sidebar({ className }: SidebarProps) {
 			{/* Overlay for mobile - WCAG compliant with proper focus management */}
 			{isOpen && (
 				<div
-					className="fixed inset-0 z-40 transition-opacity duration-200 ease-in-out bg-black/50 md:hidden"
+					className="fixed inset-0 z-40 transition-opacity duration-200 ease-in-out bg-black/50 md:hidden bg-red-400"
 					onClick={toggleSidebar}
 					aria-hidden="true"
 				/>

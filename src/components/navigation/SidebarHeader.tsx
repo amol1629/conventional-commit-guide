@@ -28,8 +28,6 @@ interface SidebarHeaderProps {
  * Follows WCAG 2.1 AA standards
  */
 export function SidebarHeader({
-	isOpen,
-	onToggle,
 	className,
 	isCollapsed = false,
 }: SidebarHeaderProps) {
@@ -37,7 +35,7 @@ export function SidebarHeader({
 
 	return (
 		<div
-			className={`flex items-center px-4 py-4 md:p-6 border-b border-border ${
+			className={`bg-gradient-to-b from-white via-purple-50/20 to-blue-50/20 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 flex items-center px-4 py-4 md:p-6 border-b border-border ${
 				isCollapsed ? 'justify-center ' : 'justify-between'
 			} ${className}`}
 		>

@@ -97,16 +97,16 @@ export function ModernSidebar({ className }: ModernSidebarProps) {
 			{/* Sidebar */}
 			<aside
 				id="navigation-menu"
-				className={`fixed top-0 left-0 z-50 h-full bg-background border-r border-border transform transition-all duration-300 ease-in-out ${
-					isOpen ? 'translate-x-0' : '-translate-x-full'
-				} md:translate-x-0 md:static md:z-auto ${
-					isCollapsed ? 'w-16' : 'w-64'
-				} ${className}`}
+				className={`bg-white dark:bg-slate-950 fixed top-0 left-0 z-50 h-full border-r border-border transform transition-all duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'
+					} md:translate-x-0 md:static md:z-auto ${isCollapsed ? 'w-16' : 'w-64'
+					} ${className}`}
 				role="navigation"
 				aria-label="Main navigation"
 			>
-				<div className="flex flex-col h-full">
-					{/* Header with Toggle Button */}
+				{/* 🌫️ Ultra-subtle gradient */}
+				<div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white via-purple-50/30 to-blue-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950" />
+
+				<div className="relative flex flex-col h-full">
 					<SidebarHeader
 						isOpen={isOpen}
 						onToggle={toggleSidebar}
@@ -114,11 +114,10 @@ export function ModernSidebar({ className }: ModernSidebarProps) {
 						onToggleCollapse={toggleCollapse}
 					/>
 
-					{/* Navigation Items */}
 					<nav
 						className={cn(
 							'flex-1 py-6 transition-all duration-300 ease-in-out flex flex-col',
-							isCollapsed ? 'px-2 space-y-4 items-center' : 'px-4 space-y-5',
+							isCollapsed ? 'px-2 space-y-4 items-center' : 'px-4 space-y-5'
 						)}
 						role="navigation"
 						aria-label={t('common:navigation_main_label') as string}
@@ -138,7 +137,6 @@ export function ModernSidebar({ className }: ModernSidebarProps) {
 						))}
 					</nav>
 
-					{/* Footer with sidebar expand/collapse toggle */}
 					<SidebarFooter
 						isCollapsed={isCollapsed}
 						onToggleCollapse={toggleCollapse}
